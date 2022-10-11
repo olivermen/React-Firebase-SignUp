@@ -1,0 +1,59 @@
+* {
+  background-color: #00214c;
+}
+
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 120px;
+  width: auto;
+  padding: 20px 0px;
+}
+
+.App-movie {
+  padding: 0px 0px;
+}
+
+.App-header {
+  background-color: #00214c;
+  color: white;
+}
+
+.App-h1-logo {
+  height: 70px;
+  width: auto;
+}
+
+.App-h1 {
+  padding: 50px 0px 0px 0px;
+  font-size: 60px;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+
+.App-input {
+  background-color: white;
+  font-size: 30px;
+  border: none;
+}
+.App-intro {
+  font-size: large;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+}
+
+nav ul li {
+  margin: 0 0.5rem;
+}
