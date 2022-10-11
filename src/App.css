@@ -21,14 +21,29 @@
   color: white;
 }
 
+.App-sign {
+  color: white;
+  text-align: center;
+}
+
 .App-h1-logo {
   height: 70px;
   width: auto;
 }
 
+.App-button {
+  padding: 10px 80px;
+  background-color: rgb(9, 97, 254);
+  background-image: linear-gradient(to right, rgb(9, 97, 254), rgb(4, 159, 255));
+  border: none;
+  color: white;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
 .App-h1 {
   padding: 50px 0px 0px 0px;
-  font-size: 60px;
+  font-size: 55px;
   display: flex;
   justify-content: center;
   text-align: center;
@@ -40,9 +55,18 @@
 
 .App-input {
   background-color: white;
-  font-size: 30px;
+  font-size: 20px;
+  padding: 15px 20px;
+  width: 400px;
   border: none;
+  margin-bottom: 20px;
 }
+
+.App-policy {
+  width: 400px;
+  margin: auto;
+}
+
 .App-intro {
   font-size: large;
 }

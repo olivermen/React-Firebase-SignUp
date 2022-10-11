@@ -1,69 +1,59 @@
-import React, { Component } from 'react';
-import logo from './logo.png';
-import movie from './logo-movie.mp4';
-import './App.css';
+import React, { Component } from "react";
+import logo from "./logo.png";
+import movie from "./logo-movie.mp4";
+import "./App.css";
 import {
   BrowserRouter as Router,
   Link,
   Switch,
   Route,
   Redirect,
-} from 'react-router-dom';
-import * as routes from './constants/routes';
-import SignUp from './SignUp';
-import SignIn from './SignIn';
-import { firebase, auth } from './firebase';
+} from "react-router-dom";
+import * as routes from "./constants/routes";
+import SignUp from "./components/Auth/SignUp";
+import SignIn from "./components/Auth/SignIn";
+import { firebase, auth } from "./firebase";
 
 const UnauthenticatedHomeContent = () => {
   return (
     <React.Fragment>
-      <p>
-        Welcome, please <Link to={routes.SIGN_IN_PATH}>sign in</Link>
-      </p>
-      <p>
-        If you don't already have an account,{' '}
-        <Link to={routes.SIGN_UP_PATH}>sign up</Link>
-      </p>
+      <p></p>
     </React.Fragment>
   );
 };
 
 const AuthenticatedHomeContent = ({ authUser }) => {
-  return (
-    <p>
-      Welcome back, {authUser.email}!
-    </p>
-  );
+  return <p>Welcome back, {authUser.email}!</p>;
 };
 
 class Home extends React.Component {
   render() {
     return (
       <AuthContext.Consumer>
-        {({ authUser }) =>
+        {({ authUser }) => (
           <div>
-            <h1>Home</h1>
             {!authUser && <UnauthenticatedHomeContent />}
             {authUser && <AuthenticatedHomeContent authUser={authUser} />}
-          </div>}
+          </div>
+        )}
       </AuthContext.Consumer>
     );
   }
 }
 
 class SignOut extends React.Component {
-  signOut = e => {
+  signOut = (e) => {
     if (e && e.preventDefault) {
       e.preventDefault();
     }
 
     return auth
       .doSignOut()
-      .then(response => {
-        console.log('successfully signed out', response);
+      .then((response) => {
+        console.log("successfully signed out", response);
       })
-      .catch(err => {
-        console.log('failed to sign out', err);
+      .catch((err) => {
+        console.log("failed to sign out", err);
       });
   };
 
@@ -80,7 +70,11 @@ const AuthenticatedNavigation = () => {
   return (
     <React.Fragment>
       <li>
-        <Link to={routes.SIGN_OUT_PATH}>Sign Out</Link>
+        <Link to={routes.SIGN_OUT_PATH}>
+          <button className="App-button" type="submit">
+            Sign Out
+          </button>
+        </Link>
       </li>
     </React.Fragment>
   );
@@ -90,10 +84,18 @@ const UnauthenticatedNavigation = () => {
   return (
     <React.Fragment>
       <li>
-        <Link to={routes.SIGN_UP_PATH}>Sign Up</Link>
+        <Link to={routes.SIGN_UP_PATH}>
+          <button className="App-button" type="submit">
+            Sign Up
+          </button>
+        </Link>
       </li>
       <li>
-        <Link to={routes.SIGN_IN_PATH}>Sign In</Link>
+        <Link to={routes.SIGN_IN_PATH}>
+          <button className="App-button" type="submit">
+            Sign In
+          </button>
+        </Link>
       </li>
     </React.Fragment>
   );
@@ -102,16 +104,17 @@ const UnauthenticatedNavigation = () => {
 const Navigation = () => {
   return (
     <AuthContext.Consumer>
-      {({ authUser }) =>
+      {({ authUser }) => (
         <nav>
           <ul>
-            <li>
+            {/* <li>
               <Link to={routes.HOME_PATH}>Home</Link>
-            </li>
+            </li> */}
             {authUser && <AuthenticatedNavigation />}
             {!authUser && <UnauthenticatedNavigation />}
           </ul>
-        </nav>}
+        </nav>
+      )}
     </AuthContext.Consumer>
   );
 };
@@ -124,7 +127,7 @@ class AuthProvider extends React.Component {
   };
 
   componentDidMount() {
-    firebase.auth.onAuthStateChanged(authUser => {
+    firebase.auth.onAuthStateChanged((authUser) => {
       authUser
         ? this.setState(() => ({ authUser }))
         : this.setState(() => ({ authUser: null }));
@@ -147,21 +150,24 @@ class App extends Component {
         <Router>
           <div className="App">
             <header className="App-header">
-              <img src={logo} className="App-logo" alt="logo" /> 
-              <div className="App-movie" >
-                <video src={movie} height="400" autoPlay loop />
+              <img src={logo} className="App-logo" alt="logo" />
+              <div className="App-movie">
+                <video src={movie} width="1900" autoPlay loop muted />
               </div>
-              <h1 className="App-h1">Join <img src={logo} className="App-h1-logo" alt="logo" /> </h1>
-              <div><input type="text" className="App-input" placeholder="Email or Phone Number"></input></div>
-              <input type="text" className="App-input" placeholder="Email or Phone Number"></input>
             </header>
-            <Navigation />
-            <Switch>
-              <Route exact path={routes.HOME_PATH} component={Home} />
-              <Route exact path={routes.SIGN_UP_PATH} component={SignUp} />
-              <Route exact path={routes.SIGN_IN_PATH} component={SignIn} />
-              <Route exact path={routes.SIGN_OUT_PATH} component={SignOut} />
-            </Switch>
+            <div className="App-sign">
+              <h1 className="App-h1">
+                Join <img src={logo} className="App-h1-logo" alt="logo" />{" "}
+              </h1>
+
+              {/* <Navigation /> */}
+              <Switch>
+                <Route exact path={routes.HOME_PATH} component={SignUp} />
+                <Route exact path={routes.SIGN_UP_PATH} component={SignUp} />
+                <Route exact path={routes.SIGN_IN_PATH} component={SignIn} />
+                <Route exact path={routes.SIGN_OUT_PATH} component={SignOut} />
+              </Switch>
+            </div>
           </div>
         </Router>
       </AuthProvider>
