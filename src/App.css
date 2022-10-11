@@ -16,6 +16,10 @@
   padding: 0px 0px;
 }
 
+.Border-round { 
+  border-radius: 10px;
+}
+
 .App-header {
   background-color: #00214c;
   color: white;
@@ -39,6 +43,7 @@
   color: white;
   font-weight: bold;
   margin-top: 20px;
+  margin-bottom: 30px;
 }
 
 .App-h1 {
@@ -47,6 +52,7 @@
   display: flex;
   justify-content: center;
   text-align: center;
+  font-family: sans-serif;
 }
 
 .App-title {
@@ -64,7 +70,10 @@
 
 .App-policy {
   width: 400px;
+  font-size: 15px;
   margin: auto;
+  font-family: sans-serif;
+  text-align: left;
 }
 
 .App-intro {

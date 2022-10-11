@@ -152,7 +152,15 @@ class App extends Component {
             <header className="App-header">
               <img src={logo} className="App-logo" alt="logo" />
               <div className="App-movie">
-                <video src={movie} width="1900" autoPlay loop muted />
+                <video
+                  className="Border-round"
+                  width="800"
+                  autoPlay={true}
+                  loop
+                  muted
+                >
+                  <source src={movie} type="video/mp4"></source>
+                </video>
               </div>
             </header>
             <div className="App-sign">

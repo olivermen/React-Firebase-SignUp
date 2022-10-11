@@ -49,7 +49,7 @@ class SignUp extends React.Component {
                     name="email"
                     value={state.email}
                     onChange={onEmailChange}
-                    className="App-input"
+                    className="App-input Border-round"
                     placeholder="Email or Phone Number"
                   />
                 </div>
@@ -59,7 +59,7 @@ class SignUp extends React.Component {
                     name="password"
                     value={state.password}
                     onChange={onPasswordChange}
-                    className="App-input"
+                    className="App-input Border-round"
                     placeholder="Password"
                   />
                 </div>
@@ -67,7 +67,7 @@ class SignUp extends React.Component {
                   By cliking sign up you agree to our Terms, Data Policy and
                   Cookies Policy.
                 </p>
-                <button className="App-button" type="submit">
+                <button className="App-button Border-round" type="submit">
                   Sign up
                 </button>
               </form>
